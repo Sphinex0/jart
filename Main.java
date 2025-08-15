@@ -15,6 +15,8 @@ public class Main {
         Image image = new Image(1000, 1000);
         Point point = new Point(1,1);
         point.draw(image);
+        Line line = new Line(point, new Point(500, 250));
+        line.draw(image);
         // point.draw(image);
         // Rectangle rectangle = new Rectangle(new Point(50, 50), new Point(300, 200));
         // rectangle.draw(image);

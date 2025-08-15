@@ -1,17 +1,19 @@
 
-
 import java.io.File;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-
-public class Image implements Displayable{
+public class Image implements Displayable {
     BufferedImage image;
+    private int width;
+    private int height;
 
-    public Image(int width, int higth) {
-        image = new BufferedImage(width, higth, BufferedImage.TYPE_INT_RGB);
+    public Image(int width, int height) {
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        this.height = height;
+        this.width = width;
     }
 
     @Override
@@ -25,8 +27,9 @@ public class Image implements Displayable{
 
     @Override
     public void display(int x, int y, Color color) {
-        image.setRGB(x,y,color.getRGB());
+        if (x >= 0 & x <= width && y >= 0 && y <= height) {
+            image.setRGB(x, y, color.getRGB());
+        }
     }
 
-    
 }
