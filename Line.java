@@ -3,10 +3,22 @@ import java.awt.Color;
 public class Line implements Drawable {
     Point p1;
     Point p2;
+    Color color;
 
     Line(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;
+        this.color = this.getColor();
+    }
+
+    Line(Point p1, Point p2, Color color) {
+        this.p1 = p1;
+        this.p2 = p2;
+        this.color = color;
+    }
+
+    public static Line random(int width, int height) {
+        return new Line(Point.random(width, height), Point.random(width, height));
     }
 
     @Override
@@ -16,11 +28,19 @@ public class Line implements Drawable {
         double steps = Math.max(Math.abs(dx), Math.abs(dy));
         double x_inc = dx / steps, y_inc = dy / steps;
         double x = x0, y = y0;
-        Color color = this.getColor();
-        System.err.println(x_inc);
-        System.err.println(y_inc);
         for (int i = 0; i <= steps; i++) {
-            displayable.display(((int)Math.round(x)),((int)Math.round(y)), color);
+            // new method (xiaolin)
+            int ix = (int) x, iy = (int) y;
+            int dist = y_inc == 1 ? (int) ((x - ix) * 255) : (int) ((y - iy) * 255);
+
+            displayable.display(ix, iy, new Color(color.getRed(), color.getGreen(), color.getBlue(), 255 - dist));
+
+            displayable.display(ix + 1, iy + 1, new Color(color.getRed(), color.getGreen(), color.getBlue(), dist));
+
+            // old method
+            // displayable.display(((int) Math.round(x)), ((int) Math.round(y)),
+            // new Color(color.getRed(), color.getGreen(), color.getBlue()));
+
             x += x_inc;
             y += y_inc;
         }

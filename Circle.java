@@ -1,0 +1,60 @@
+import java.awt.Color;
+
+public class Circle implements Drawable {
+    Point center;
+    int raduis;
+    Color color;
+
+    Circle(Point center, int raduis) {
+        this.center = center;
+        this.raduis = raduis;
+        this.color = this.getColor();
+
+    }
+
+    public static Circle random(int width, int height) {
+        int raduis = (int) (Math.random() * Math.min(width, height));
+        return new Circle(Point.random(width, height), raduis);
+    }
+
+    @Override
+    public void draw(Displayable displayable) {
+        if (this.raduis == 0) {
+            center.draw(displayable);
+            return;
+        }
+        int cx = center.x, cy = center.y;
+        int x = 0;
+        int y = -this.raduis;
+        int p = -this.raduis;
+
+        while (x < -y) {
+            if (p > 0) {
+                y += 1;
+                p += 2 * (x + y) + 1;
+            } else {
+                p += 2 * x + 1;
+            }
+            displayable.display(cx + x, cy + y, color);
+            displayable.display(cx - x, cy + y, color);
+            displayable.display(cx + x, cy - y, color);
+            displayable.display(cx - x, cy - y, color);
+
+            displayable.display(cx + y, cy + x, color);
+            displayable.display(cx - y, cy + x, color);
+            displayable.display(cx + y, cy - x, color);
+            displayable.display(cx - y, cy - x, color);
+            x += 1;
+        }
+
+    }
+
+    @Override
+    public Color getColor() {
+        int r = (int) (Math.random() * 256);
+        int g = (int) (Math.random() * 256);
+        int b = (int) (Math.random() * 256);
+        return new Color(r, g, b);
+    }
+
+}

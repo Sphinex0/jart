@@ -9,6 +9,12 @@ public class Point implements Drawable {
         this.y = y;
     }
 
+    public static Point random(int width, int height) {
+        int x = (int) (Math.random() * width);
+        int y = (int) (Math.random() * height);
+        return new Point(x, y);
+    }
+
     @Override
     public void draw(Displayable displayable) {
         displayable.display(x, y, this.getColor());
@@ -16,9 +22,9 @@ public class Point implements Drawable {
 
     @Override
     public Color getColor() {
-        int r = (int)(Math.random() * 256);
-        int g = (int)(Math.random() * 256);
-        int b = (int)(Math.random() * 256);
-        return new Color(r,g,b);
+        int r = (int) (Math.random() * 256);
+        int g = (int) (Math.random() * 256);
+        int b = (int) (Math.random() * 256);
+        return new Color(r, g, b);
     }
 }
