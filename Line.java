@@ -29,18 +29,8 @@ public class Line implements Drawable {
         double x_inc = dx / steps, y_inc = dy / steps;
         double x = x0, y = y0;
         for (int i = 0; i <= steps; i++) {
-            // new method (xiaolin)
-            int ix = (int) x, iy = (int) y;
-            int dist = y_inc == 1 ? (int) ((x - ix) * 255) : (int) ((y - iy) * 255);
-
-            displayable.display(ix, iy, new Color(color.getRed(), color.getGreen(), color.getBlue(), 255 - dist));
-
-            displayable.display(ix + 1, iy + 1, new Color(color.getRed(), color.getGreen(), color.getBlue(), dist));
-
-            // old method
-            // displayable.display(((int) Math.round(x)), ((int) Math.round(y)),
-            // new Color(color.getRed(), color.getGreen(), color.getBlue()));
-
+            displayable.display(((int) Math.round(x)), ((int) Math.round(y)),
+            new Color(color.getRed(), color.getGreen(), color.getBlue()));
             x += x_inc;
             y += y_inc;
         }

@@ -11,20 +11,11 @@ public class Image implements Displayable {
     private int height;
 
     public Image(int width, int height) {
-        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         this.height = height;
         this.width = width;
-        this.clear_bg();
 
 
-    }
-
-    public void clear_bg() {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                display(x, y, Color.BLACK);
-            }
-        }
     }
 
     public int getWidth() {
