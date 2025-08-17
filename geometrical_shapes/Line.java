@@ -42,13 +42,4 @@ public class Line implements Drawable {
             y += y_inc;
         }
     }
-
-    @Override
-    public Color getColor() {
-        int r = (int) (Math.random() * 256);
-        int g = (int) (Math.random() * 256);
-        int b = (int) (Math.random() * 256);
-        return new Color(r, g, b);
-    }
-
 }

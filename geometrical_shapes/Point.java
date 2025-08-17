@@ -22,12 +22,4 @@ public class Point implements Drawable {
         Color color = this.getColor();
         displayable.display(x, y, color);
     }
-
-    @Override
-    public Color getColor() {
-        int r = (int) (Math.random() * 256);
-        int g = (int) (Math.random() * 256);
-        int b = (int) (Math.random() * 256);
-        return new Color(r, g, b);
-    }
 }

@@ -34,12 +34,4 @@ public class Cube implements Drawable {
         new Line(rec1.p3, rec2.p3, color).draw(displayable);
         new Line(rec1.p4, rec2.p4, color).draw(displayable);
     }
-
-    @Override
-    public Color getColor() {
-        int r = (int) (Math.random() * 256);
-        int g = (int) (Math.random() * 256);
-        int b = (int) (Math.random() * 256);
-        return new Color(r, g, b);
-    }
 }

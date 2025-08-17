@@ -19,13 +19,4 @@ public class Triangle implements Drawable {
         new Line(p2, p3, color).draw(displayable);
         new Line(p3, p1, color).draw(displayable);
     }
-
-    @Override
-    public Color getColor() {
-        int r = (int) (Math.random() * 256);
-        int g = (int) (Math.random() * 256);
-        int b = (int) (Math.random() * 256);
-        return new Color(r, g, b);
-    }
-
 }
