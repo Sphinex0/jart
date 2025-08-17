@@ -31,6 +31,9 @@ public class Main {
         Cube cube = new Cube(new Point(400, 100), new Point(600, 300));
         cube.draw(image);
 
+        Pentagon pentagon = new Pentagon(new Point(700, 500), 120);
+        pentagon.draw(image);
+        
         image.save("image.png");
     }
 }
