@@ -1,14 +1,15 @@
+package geometrical_shapes;
+
 import java.awt.Color;
 
 public class Circle implements Drawable {
+
     Point center;
     int raduis;
-    Color color;
 
-    Circle(Point center, int raduis) {
+    public Circle(Point center, int raduis) {
         this.center = center;
         this.raduis = raduis;
-        this.color = this.getColor();
 
     }
 
@@ -23,6 +24,8 @@ public class Circle implements Drawable {
             center.draw(displayable);
             return;
         }
+        Color color = this.getColor();
+
         int cx = center.x, cy = center.y;
         int x = 0;
         int y = -this.raduis;

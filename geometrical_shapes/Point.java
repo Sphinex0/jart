@@ -1,4 +1,6 @@
+package geometrical_shapes;
 import java.awt.Color;
+
 
 public class Point implements Drawable {
     int x;
@@ -17,7 +19,8 @@ public class Point implements Drawable {
 
     @Override
     public void draw(Displayable displayable) {
-        displayable.display(x, y, this.getColor());
+        Color color = this.getColor();
+        displayable.display(x, y, color);
     }
 
     @Override

@@ -1,43 +1,44 @@
+package geometrical_shapes;
 
-import java.io.File;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-
+import java.io.File;
+import java.io.IOException;
 import javax.imageio.ImageIO;
+
 
 public class Image implements Displayable {
     BufferedImage image;
-    private int width;
-    private int height;
+    private final int WIDTH;
+    private final int HEIGHT;
 
     public Image(int width, int height) {
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        this.height = height;
-        this.width = width;
-
+        this.HEIGHT = height;
+        this.WIDTH = width;
 
     }
 
     public int getWidth() {
-        return width;
+        return WIDTH;
     }
 
     public int getHeight() {
-        return height;
+        return HEIGHT;
     }
 
     @Override
     public void save(String string) {
         try {
             ImageIO.write(image, "PNG", new File(string));
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println(e);
-        }
+        } 
     }
 
     @Override
     public void display(int x, int y, Color color) {
-        if (x >= 0 & x < width && y >= 0 && y < height) {
+        if (x >= 0 & x < WIDTH && y >= 0 && y < HEIGHT) {
             image.setRGB(x, y, color.getRGB());
         }
     }

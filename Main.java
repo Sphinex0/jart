@@ -1,16 +1,16 @@
-import java.awt.Color;
+import geometrical_shapes.*;
 
-interface Displayable {
-    void display(int x, int y, Color color);
+// interface Displayable {
+//     void display(int x, int y, Color color);
 
-    void save(String string);
-}
+//     void save(String string);
+// }
 
-interface Drawable {
-    void draw(Displayable displayable);
+// interface Drawable {
+//     void draw(Displayable displayable);
 
-    Color getColor();
-}
+//     Color getColor();
+// }
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +26,7 @@ public class Main {
         new Point(100, 900));
         triangle.draw(image);
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 1; i++) {
         Circle circle = Circle.random(image.getWidth(), image.getHeight());
         circle.draw(image);
         }
