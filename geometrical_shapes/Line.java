@@ -1,14 +1,14 @@
 package geometrical_shapes;
+
 import java.awt.Color;
 
-
-
 public class Line implements Drawable {
+
     Point p1;
     Point p2;
+    Color color;
 
-    public Line(Point p1, Point p2) 
-    {
+    public Line(Point p1, Point p2) {
         this.p1 = p1;
         this.p2 = p2;
     }
@@ -16,6 +16,8 @@ public class Line implements Drawable {
     public Line(Point p1, Point p2, Color color) {
         this.p1 = p1;
         this.p2 = p2;
+        this.color = color;
+
     }
 
     public static Line random(int width, int height) {
@@ -24,7 +26,9 @@ public class Line implements Drawable {
 
     @Override
     public void draw(Displayable displayable) {
-        Color color = this.getColor();
+        if (color == null) {
+            color = this.getColor();
+        }
 
         int x0 = p1.x, y0 = p1.y, x1 = p2.x, y1 = p2.y;
         int dx = x1 - x0, dy = y1 - y0;
@@ -33,11 +37,12 @@ public class Line implements Drawable {
         double x = x0, y = y0;
         for (int i = 0; i <= steps; i++) {
             displayable.display(((int) Math.round(x)), ((int) Math.round(y)),
-            new Color(color.getRed(), color.getGreen(), color.getBlue()));
+                    color);
             x += x_inc;
             y += y_inc;
         }
     }
+
     @Override
     public Color getColor() {
         int r = (int) (Math.random() * 256);
